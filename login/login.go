@@ -7,18 +7,22 @@ import (
 	"github.com/gocolly/colly"
 )
 
+//unmarshal need exported expression
 type RealResponse struct {
-	Message []struct {
-		id           string `json:"id"`
-		userID       string `json:"partnerUserId"`
-		cardNumber   string `json:"partnerUserCardNumber"`
-		name         string `json:"partnerUserName"`
-		paidCoin     string `json:"paidCoin"`
-		paidItem     string `json:"paidItem"`
-		itemQuantity string `json:"paidItemQuantity"`
-		paidStatus   string `json:"paidStatus"`
-		paidTime     string `json:"paidTimestampDateTime"`
-	} `json:"data"`
+	Data PaidData `json:"data"`
+}
+
+//separated dataset
+type PaidData []struct {
+	ID           string `json:"id"`
+	UserID       string `json:"partnerUserId"`
+	CardNumber   string `json:"partnerUserCardNumber"`
+	Name         string `json:"partnerUserName"`
+	PaidCoin     string `json:"paidCoin"`
+	PaidItem     string `json:"paidItem"`
+	ItemQuantity string `json:"paidItemQuantity"`
+	PaidStatus   string `json:"paidStatus"`
+	PaidTime     string `json:"paidTimestampDateTime"`
 }
 
 func main() {
